@@ -1,0 +1,30 @@
+<template>
+    <style>
+        .color{
+            color:red
+        }
+    </style>
+    <p class="color">
+        my web color compontens
+    </p>
+</template>
+<script>
+    (function() {
+        console.log('init reg compontens');
+        var element = Object.create(HTMLElement.prototype)
+        var template = document.currentScript.ownerDocument.querySelector('template').content
+        element.createdCallback = function() {
+            console.log('createdCallback: ', this)
+            var root = this.creatShadowRoot()
+            var temp = document.importNode(template, true)
+            root.appendChild(temp)
+        }
+        
+        // document.registerElement('color-coms', { //register componten
+        //     prototype: element
+        // })
+        // window.customElements.define('color-coms', function() {
+        //     console.log('>>>>>>>')
+        // })
+    })()
+</script>

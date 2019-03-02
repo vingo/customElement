@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>xxxxxxxxxx</title>
+    <!-- <link rel="import" href="./color_coms.html" /> -->
+    <style>
+        x-tag {
+            color:red
+        }
+    </style>
+    <template id="tmpl">
+        <style>
+        /*scoped styles*/
+        </style>
+        <b>Hello World!</b>
+        <slot></slot>
+    </template>
+    <script>
+        window.customElements.define('x-tag', class extends HTMLElement {
+            constructor() {
+                super()
+                let shadowRoot = this.attachShadow({mode: 'open'})
+                let tmpl = document.querySelector('#tmpl')
+                shadowRoot.appendChild(tmpl.content.cloneNode(true))
+            }
+        })
+    </script>
+</head>
+<body>
+    <h1>hahah</h1>
+    <!--使用已注册的标签-->
+    <x-tag></x-tag>
+
+</body>
+</html>
